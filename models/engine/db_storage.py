@@ -50,6 +50,20 @@ class DBStorage:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
         return (new_dict)
+    
+    def get(self, cls, id):
+        """get obj of class for given id"""
+        key = f"{cls.__name__}.{id}"
+        objects = self.all(cls)
+        try:
+            return objects[key]
+        except KeyError:
+            return None
+
+    def count(self, cls=None):
+        """count number of objects for given class"""
+        objects = self.all(cls)
+        return len(objects)
 
     def new(self, obj):
         """add the object to the current database session"""
