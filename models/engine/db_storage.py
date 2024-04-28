@@ -50,7 +50,7 @@ class DBStorage:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
         return (new_dict)
-    
+
     def get(self, cls, id):
         """get obj of class for given id"""
         key = f"{cls.__name__}.{id}"
